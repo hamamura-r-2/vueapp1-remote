@@ -9,11 +9,33 @@
 </head>
 
 <body>
-<h3>はじめてのvue</h3>
-<p>リモートで加筆</p>
-<p>ローカルでさらに加筆</p>
-<p>topicブランチ作成</p>
-<p>mainをmasterにpushできるかテスト</p>
+    <h2>vueのディレクティブサンプル</h2>
+    <div id="app">
+        <p>マスタッシュ構文{{message}}</p>
+        <p v-bind:class="variable">v-bindでクラスを変数指定する</p>
+        <button v-on:click="clicked">v-onでここをクリックするとイベント作動</button>
+        <p v-if="iserror">v-ifで条件がエラーなら非表示</p>
+        <p v-show="iserror2">v-showで条件がエラーなら非表示だがDOMは残る</p>
+        <p v-for="item in items">v-forでの繰り返し1{{item}}</p>
+        <p v-for="item in items">v-forでの繰り返し2{{item.size}}</p>
+        <input type="text" v-model="inputtext">
+        <p>v-modelで入力内容を表示{{inputtext}}</p>
+        <p>------------</p>
+        <p>ここまでディレクティブでここからフィルター</p>
+        <p>------------</p>
+        <p>郵便番号を7桁で表示する</p>
+        <input type="text" v-model="inputNumber" maxlength="7" v-on:keypress.enter="getAddress(inputNumber)">
+        <p>入力された文字は{{inputNumber}}</p>
+        <p>7桁に変換して表示すると、{{inputNumber | filterNum}}</p>
+        <p>{{passNumber}}</p>
+        <button v-on:click="getAddress(inputNumber)">これをクリックまたは入力後エンターしたら取得した住所を表示</button>
+        <p>{{results}}</p>
 
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
